@@ -26,3 +26,5 @@ Public repository and v1.0.0 release published successfully. Clean Linux CI expo
 ## Live hosting
 
 GitHub Pages URL: https://adityachauhan0.github.io/beachball-boogey/ . `.github/workflows/pages.yml` builds and tests main, packages the self-contained HTML and deploys it as `index.html`. Embedded resources avoid repository-subpath asset failures. Hosting uses GitHub Actions OIDC; no AI Gateway credential is needed or stored. Existing local server remains available independently.
+
+Live verification: GitHub Pages deployment succeeded on 2026-09-27. The public HTTPS page loaded the beach and all three model portraits, advanced through difficulty selection and entered a live match with the HUD visible. No captured browser warnings/errors during this check. The hosted self-contained build is verified; direct `file://` opening remains separately unverified. The workflow ran typecheck, all tests and standalone packaging before publishing.
