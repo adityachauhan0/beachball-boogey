@@ -18,3 +18,7 @@ Fresh typecheck and production/standalone builds pass. Full suite: 108/108 tests
 Direct-from-disk browser verification is unperformed: browser-tool policy rejected the `file://` URL. No workaround was attempted. Existing local browser verification covers the web game, not the offline HTML specifically. Broader browser/device acceptance, character fidelity, performance and controlled real-window focus checks remain open. The local server's lifetime still depends on the host session/machine.
 
 No blanket license for project-original assets or supplied music was invented. Existing source and bundled Three.js notices are retained.
+
+## Publication
+
+Public repository and v1.0.0 release published successfully. Clean Linux CI exposed missing explicit `@types/node` dependency for the tests; main now declares it and includes `node` in TypeScript types. This is a development-only fix and does not alter the standalone game bytes.
