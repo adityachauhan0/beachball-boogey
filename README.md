@@ -63,6 +63,30 @@ The controls stay on screen at the bottom-right. Point into the far court to pla
 
 **Need less motion?** Enable reduced motion in Options. Your operating system's reduced-motion preference is respected too.
 
+## 🤖 Your rival brought a tiny brain
+
+AI is part of the rally itself: it **moves the opponent, decides when it can return the ball, and learns where to place its next shot**. Everything runs locally in your browser, including in the offline release.
+
+### Read the ball. Chase the bounce. Return the favour.
+
+The rival tracks the ball's trajectory, waits through a reaction delay, and predicts a reachable interception point. It moves within its own half, attempts a legal return, then recovers toward its starting position. Contact distance, ball height, cooldown, and one-return-per-flight checks still apply. Limited speed and small targeting errors give you room to beat it with placement.
+
+### Keep missing left? Expect more left.
+
+The shot selector learns across **five placements: centre, left, right, short, and deep**. It keeps a small scorecard of attempts and successful outcomes for each placement. If an actual rival return bounces twice on your side, that placement earns a success. Returning it prevents that success; rival net/out shots count as failures. Opening serves do not train the scorecard.
+
+Over the match, the rival favours placements with better estimated success while occasionally trying something else. For example, repeatedly missing deep returns can make backcourt shots more attractive to it. That is a tendency, not a guaranteed next shot: exploration and forgiving choices keep rallies varied. The between-point tactic message reflects its current preference, rather than claiming it has proven a weakness.
+
+| Beach mood | How the AI changes |
+| :--- | :--- |
+| **Easy · Find your feet** | Slower reactions, narrower shots, and frequent safe centre returns. |
+| **Normal · Bring your game** | Baseline reactions, wider placement, and a balance of learned choices and exploration. |
+| **Hard · Make a splash** | Faster reactions, the widest placement, and more emphasis on successful learned shots. |
+
+Movement speed stays the same across difficulties. The first two points use forgiving centre placements. Learning carries between points, but **Restart, Rematch, or a new match clears it**; no player profile is saved between matches.
+
+Under the hood, this combines a rule-based movement controller with a lightweight **epsilon-greedy bandit using Beta(1,1) priors** for shot selection. It updates a handful of counters during play. There is **no LLM, neural-network training, cloud inference, or API key** involved. Jumping and aerial AI actions are not implemented; the rival's controller stays grounded.
+
 ## 🛠️ Bring your own beach
 
 Requires **Node.js 20.19+ or 22.12+** and npm.
