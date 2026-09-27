@@ -22,3 +22,7 @@ No blanket license for project-original assets or supplied music was invented. E
 ## Publication
 
 Public repository and v1.0.0 release published successfully. Clean Linux CI exposed missing explicit `@types/node` dependency for the tests; main now declares it and includes `node` in TypeScript types. This is a development-only fix and does not alter the standalone game bytes.
+
+## Live hosting
+
+GitHub Pages URL: https://adityachauhan0.github.io/beachball-boogey/ . `.github/workflows/pages.yml` builds and tests main, packages the self-contained HTML and deploys it as `index.html`. Embedded resources avoid repository-subpath asset failures. Hosting uses GitHub Actions OIDC; no AI Gateway credential is needed or stored. Existing local server remains available independently.

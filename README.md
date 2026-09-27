@@ -9,7 +9,7 @@
 ![Three.js](https://img.shields.io/badge/3D-Three.js-218e88?style=for-the-badge)
 ![Offline](https://img.shields.io/badge/PLAY-OFFLINE-f2bb3d?style=for-the-badge)
 
-[**🎮 DOWNLOAD & PLAY**](https://github.com/adityachauhan0/beachball-boogey/releases/latest/download/Beach-Ball-Boogey.html) · [**🎬 WATCH THE DEMO**](media/demo.mp4) · [**🛠️ BUILD IT YOURSELF**](#-bring-your-own-beach)
+[**☀️ PLAY IN YOUR BROWSER**](https://adityachauhan0.github.io/beachball-boogey/) · [**🎮 DOWNLOAD & PLAY**](https://github.com/adityachauhan0/beachball-boogey/releases/latest/download/Beach-Ball-Boogey.html) · [**🎬 WATCH THE DEMO**](media/demo.mp4) · [**🛠️ BUILD IT YOURSELF**](#-bring-your-own-beach)
 
 ![Welcome to Beach Ball Boogey](media/beach-ball-boogey.png)
 
@@ -35,6 +35,8 @@ Welcome to **Beach Ball Boogey**, an arcade soccer-tennis game built for a seven
 The preview above opens the video; GitHub does not consistently render inline video players inside README files. This is the supplied gameplay recording, compressed for the repository. The original recording is also included with the release.
 
 ## 🎮 Download. Open. Boogie.
+
+**[Play the live game here](https://adityachauhan0.github.io/beachball-boogey/)** — no download needed. Want to take the beach offline?
 
 1. Download **[Beach-Ball-Boogey.html](https://github.com/adityachauhan0/beachball-boogey/releases/latest/download/Beach-Ball-Boogey.html)** from the latest release.
 2. Open the downloaded file in a modern desktop browser with WebGL enabled.
