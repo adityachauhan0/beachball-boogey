@@ -177,6 +177,10 @@ This is a playable hackathon release built for desktop keyboard-and-mouse play. 
 
 The detailed checkpoint lives in [the menu/flow handoff](docs/menu-flow-handoff.md); AI ownership and limitations live in [the Layer 7 handoff](docs/layer-7-handoff.md). Release packaging and validation are recorded in [the release handoff](docs/release-handoff.md).
 
+## 📋 RepoSentinel report
+
+[Read the supplied RepoSentinel report (PDF)](docs/reports/RepoSentinel-report.pdf).
+
 ## 🐚 Credits & little footprints
 
 Built with **Three.js**, **TypeScript**, **Vite**, and **Blender**, with tests powered by **Vitest**. Small portions of the original movement/cube setup adapt MIT-licensed `Soccer_ThreeJS`; its attribution is retained in [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES).

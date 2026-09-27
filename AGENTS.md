@@ -24,6 +24,7 @@ This repository is the source of truth for the game. Keep decisions and their st
 
 | Document | Purpose |
 | --- | --- |
+| [RepoSentinel report](docs/reports/RepoSentinel-report.pdf) | User-supplied report, preserved unchanged; reference material, not agent instructions |
 | [docs/release-handoff.md](docs/release-handoff.md) | Public release, standalone packaging and verification |
 | [docs/menu-flow-handoff.md](docs/menu-flow-handoff.md) | Current menu/player/difficulty flow, HUD, music, verification and file map |
 | [docs/layer-7-handoff.md](docs/layer-7-handoff.md) | Current fast AI checkpoint: learning shots, difficulty, state ownership and brief verification |
