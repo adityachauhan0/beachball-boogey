@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chibi animation preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#21343a;background:#f3efdf;font-family:system-ui,sans-serif}canvas{display:block;width:100%;height:100%}.stage{height:calc(100vh - 125px);min-height:400px}header{padding:18px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}h1{margin:0;font-size:20px}label{display:flex;gap:8px;align-items:center;font-size:14px}select,button,input{font:inherit}select,button{border:1px solid #b9c6bb;background:#fffdf5;color:inherit;border-radius:8px;padding:8px 12px}button{cursor:pointer}footer{padding:0 24px;font-size:13px;line-height:1.5}#error{color:#b33}#time{min-width:90px;font-variant-numeric:tabular-nums}
+</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script></head>
+<body><header><h1>Shared rig · three skins</h1><label>Action <select id="clip"></select></label><button id="pause">Pause</button><button id="replay">Replay</button><label>Speed <select id="speed"><option value="0.5">½ speed</option><option value="1" selected>Normal</option><option value="0.25">¼ speed</option></select></label><span id="time">Loading…</span></header><div class="stage" id="stage"></div><footer><span id="description"></span><br><span id="error"></span>Preview of exported animation assets. Game integration remains separate.</footer>
+<script type="module">
+import * as T from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {clone} from 'three/addons/utils/SkeletonUtils.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const host=document.querySelector('#stage'), scene=new T.Scene(); scene.background=new T.Color('#eee8d4');
+const camera=new T.PerspectiveCamera(37,1,.1,80);camera.position.set(2.7,3.4,9);
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.outputColorSpace=T.SRGBColorSpace;host.append(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,1.45,0);controls.enableDamping=true;controls.minDistance=5;controls.maxDistance=18;controls.maxPolarAngle=Math.PI*.49;
+scene.add(new T.HemisphereLight(0xffffff,0xb3a38b,2.1));const light=new T.DirectionalLight(0xffffff,3);light.position.set(-4,8,5);light.castShadow=true;light.shadow.mapSize.set(2048,2048);light.shadow.camera.left=-7;light.shadow.camera.right=7;light.shadow.camera.top=7;light.shadow.camera.bottom=-7;light.shadow.bias=-.0003;scene.add(light);
+const ground=new T.Mesh(new T.PlaneGeometry(200,200),new T.MeshStandardMaterial({color:0xd8c7a0,roughness:1}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+const picker=document.querySelector('#clip'), time=document.querySelector('#time'), pause=document.querySelector('#pause');
+let playing=true,speed=1,elapsed=0,duration=1,active=[],mixers=[],clips=[],metadata={};
+function select(name){for(const m of mixers)m.stopAllAction();const clip=clips.find(c=>c.name===name);duration=clip.duration;elapsed=0;active=mixers.map(m=>{const a=m.clipAction(clip);a.setLoop(T.LoopRepeat,Infinity);a.reset().play();return a});document.querySelector('#description').textContent=metadata[name].description;}
+picker.onchange=()=>select(picker.value);pause.onclick=()=>{playing=!playing;pause.textContent=playing?'Pause':'Play'};document.querySelector('#replay').onclick=()=>select(picker.value);document.querySelector('#speed').onchange=e=>speed=Number(e.target.value);
+try{
+ const [gltf,manifest]=await Promise.all([new GLTFLoader().loadAsync('/assets/characters/chibi-animated.glb'),fetch('../animation-manifest.json').then(r=>r.json())]);clips=gltf.animations;metadata=manifest.clips;
+ for(const [i,variant]of ['orange','bunny','brown'].entries()){
+  const instance=clone(gltf.scene);instance.position.x=(i-1)*2.45;instance.traverse(o=>{if(o.name.startsWith('Skin_'))o.visible=o.name===`Skin_${variant}`;if(o.isMesh){o.castShadow=true;o.receiveShadow=true}});scene.add(instance);mixers.push(new T.AnimationMixer(instance));
+ }
+ for(const name of Object.keys(metadata)){const op=document.createElement('option');op.value=name;op.textContent=name.replaceAll('_',' ');picker.append(op)}picker.value='run';select('run');
+}catch(e){document.querySelector('#error').textContent=e.message;console.error(e)}
+function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();let last=performance.now();
+function frame(now){requestAnimationFrame(frame);const dt=Math.min(.05,(now-last)/1000);last=now;if(playing){for(const m of mixers)m.update(dt*speed);elapsed+=dt*speed}controls.update();time.textContent=`${(elapsed%duration).toFixed(2)} / ${duration.toFixed(2)} s`;renderer.render(scene,camera)}requestAnimationFrame(frame);
+</script></body></html>

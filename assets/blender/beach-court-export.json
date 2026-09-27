@@ -1,0 +1,12 @@
+{
+  "source": "assets/blender/beach_court_environment.blend",
+  "frame": 1,
+  "export": "public/assets/environments/beach-court.glb",
+  "bytes": 2968312,
+  "vertices": 11017,
+  "polygons": 8944,
+  "appearance": "Eevee frame-1 camera bake on evaluated 3D geometry",
+  "aspect": 1.595166163141994,
+  "static_environment": true,
+  "runtime_requirement": "Exact projective sampling in src/render/court-appearance.ts"
+}

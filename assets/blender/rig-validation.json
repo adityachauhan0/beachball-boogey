@@ -1,0 +1,28 @@
+{
+  "shared_armature": "CHIBI_SHARED_SKELETON",
+  "bone_count": 17,
+  "exact_visual_match": false,
+  "skins": {
+    "Skin_orange": {
+      "vertices": 12464,
+      "faces": 11368,
+      "unweighted": 0,
+      "knee_pose_moved_vertices": 4096,
+      "head_displacement": 0.0
+    },
+    "Skin_bunny": {
+      "vertices": 11924,
+      "faces": 10876,
+      "unweighted": 0,
+      "knee_pose_moved_vertices": 4088,
+      "head_displacement": 0.0
+    },
+    "Skin_brown": {
+      "vertices": 12832,
+      "faces": 11748,
+      "unweighted": 0,
+      "knee_pose_moved_vertices": 4096,
+      "head_displacement": 0.0
+    }
+  }
+}

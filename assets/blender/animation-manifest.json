@@ -1,0 +1,202 @@
+{
+  "fps": 60,
+  "clips": {
+    "idle": {
+      "duration": 1.2,
+      "loop": true,
+      "description": "Quiet ready stance; head and hands breathe while soles stay planted."
+    },
+    "run": {
+      "duration": 0.4,
+      "loop": true,
+      "description": "Fast alternating cleat shuffle, opposite hands, forward body lean; authored for 4.8 units/s."
+    },
+    "jump": {
+      "duration": 0.7,
+      "loop": false,
+      "takeoff": 0.12,
+      "apex": 0.32,
+      "land": 0.57,
+      "description": "Crouch, takeoff, tucked feet, airborne arc and soft landing."
+    },
+    "ground_kick": {
+      "duration": 0.3,
+      "loop": false,
+      "contact": 0.1,
+      "description": "Right-foot backswing, low forward strike, follow-through and planted recovery."
+    },
+    "aerial_kick": {
+      "duration": 0.55,
+      "loop": false,
+      "takeoff": 0.08,
+      "contact": 0.2,
+      "land": 0.45,
+      "description": "Hop into a raised instep volley, counterbalanced hands, cushioned landing."
+    },
+    "header": {
+      "duration": 0.35,
+      "loop": false,
+      "contact": 0.1,
+      "description": "Short backward load followed by a forward neck/torso snap at head height."
+    },
+    "jump_header": {
+      "duration": 0.6,
+      "loop": false,
+      "takeoff": 0.1,
+      "contact": 0.24,
+      "land": 0.49,
+      "description": "Airborne header with torso drive, tucked cleats and recovery."
+    },
+    "bicycle_kick": {
+      "duration": 0.55,
+      "loop": false,
+      "takeoff": 0.06,
+      "contact": 0.2,
+      "land": 0.48,
+      "description": "Backflip with scissoring cleats and an overhead strike; matches the existing 0.55s power cue."
+    },
+    "celebration": {
+      "duration": 0.85,
+      "loop": false,
+      "description": "Two quick hops, lifted hands, happy head tilt, return to ready."
+    },
+    "loss": {
+      "duration": 0.8,
+      "loop": false,
+      "description": "Head droop, sagging torso and hands, then return to ready."
+    }
+  },
+  "validation": {
+    "idle": {
+      "duration": 1.2,
+      "frame_range": [
+        1,
+        73
+      ],
+      "samples": 73,
+      "floor_min": 0.008000020869076252,
+      "max_root_lift": 0.0059045953676104546,
+      "loop_endpoint_delta": 3.6739408886277486e-18,
+      "pose_motion": 0.01499950885772705
+    },
+    "run": {
+      "duration": 0.4,
+      "frame_range": [
+        1,
+        25
+      ],
+      "samples": 25,
+      "floor_min": 0.008000020869076252,
+      "max_root_lift": 0.05000000447034836,
+      "loop_endpoint_delta": 8.572526810043317e-18,
+      "pose_motion": 0.8028407692909241
+    },
+    "jump": {
+      "duration": 0.7,
+      "frame_range": [
+        1,
+        43
+      ],
+      "samples": 43,
+      "floor_min": 0.007999962195754051,
+      "max_root_lift": 0.6784131526947021,
+      "loop_endpoint_delta": 0.0,
+      "pose_motion": 0.8674805164337158
+    },
+    "ground_kick": {
+      "duration": 0.3,
+      "frame_range": [
+        1,
+        19
+      ],
+      "samples": 19,
+      "floor_min": 0.007999973371624947,
+      "max_root_lift": 0.006808056496083736,
+      "loop_endpoint_delta": 8.572528464404543e-18,
+      "pose_motion": 0.8976752161979675
+    },
+    "aerial_kick": {
+      "duration": 0.55,
+      "frame_range": [
+        1,
+        34
+      ],
+      "samples": 34,
+      "floor_min": 0.007999947294592857,
+      "max_root_lift": 0.5498841404914856,
+      "loop_endpoint_delta": 1.2246468525851679e-17,
+      "pose_motion": 1.0727019309997559
+    },
+    "header": {
+      "duration": 0.35,
+      "frame_range": [
+        1,
+        22
+      ],
+      "samples": 22,
+      "floor_min": 0.008000020869076252,
+      "max_root_lift": 0.0059045953676104546,
+      "loop_endpoint_delta": 0.0,
+      "pose_motion": 0.46841883659362793
+    },
+    "jump_header": {
+      "duration": 0.6,
+      "frame_range": [
+        1,
+        37
+      ],
+      "samples": 37,
+      "floor_min": 0.007999952882528305,
+      "max_root_lift": 0.5777067542076111,
+      "loop_endpoint_delta": 0.0,
+      "pose_motion": 0.6835770606994629
+    },
+    "bicycle_kick": {
+      "duration": 0.55,
+      "frame_range": [
+        1,
+        34
+      ],
+      "samples": 34,
+      "floor_min": 0.007999974302947521,
+      "max_root_lift": 1.7730408906936646,
+      "loop_endpoint_delta": 1.9371509552001953e-07,
+      "pose_motion": 2.476856231689453
+    },
+    "celebration": {
+      "duration": 0.85,
+      "frame_range": [
+        1,
+        52
+      ],
+      "samples": 52,
+      "floor_min": 0.00799996592104435,
+      "max_root_lift": 0.20854704082012177,
+      "loop_endpoint_delta": 0.0,
+      "pose_motion": 0.9051787853240967
+    },
+    "loss": {
+      "duration": 0.8,
+      "frame_range": [
+        1,
+        49
+      ],
+      "samples": 49,
+      "floor_min": 0.008000020869076252,
+      "max_root_lift": 0.0059045953676104546,
+      "loop_endpoint_delta": 0.0,
+      "pose_motion": 0.5396320819854736
+    }
+  },
+  "source_game": {
+    "speed": 4.8,
+    "contact_height": [
+      0.35,
+      2.8
+    ],
+    "power_pose_duration": 0.55,
+    "manual_jump": false,
+    "header_command": false
+  },
+  "export": "public/assets/characters/chibi-animated.glb"
+}

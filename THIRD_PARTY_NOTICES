@@ -1,0 +1,61 @@
+Beach Ball Boogey includes a small adaptation of cube-player construction and movement-vector normalization from:
+
+Soccer_ThreeJS
+Copyright (c) 2025 unknown11-svg
+Source: https://github.com/unknown11-svg/Soccer_ThreeJS/blob/d96313359611303e0ba1a47fdc2402fdb9957d23/main.js
+Inspected revision: d96313359611303e0ba1a47fdc2402fdb9957d23
+Adapted portions: `createPlayer` cube placeholder construction and the `updatePlayer` movement-vector normalization pattern, in `src/render/scene.ts` and `src/game/movement.ts`.
+Changes: reduced cube proportions for the foot-tennis court; moved all position/facing data into logical TypeScript state; changed frame-based motion to fixed-step units-per-second movement; normalized and clamped the user's near half-court movement; added render interpolation and a separate facing marker.
+
+MIT License
+
+Copyright (c) 2025 unknown11-svg
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+User-supplied background music
+------------------------------
+public/assets/audio/vintage-hawaii.mp3
+Supplied by the project owner as "vintage_hawaii (4).mp3" on 2026-09-27 for use as background music. Author and license were not supplied; no third-party license is inferred.
+
+
+Three.js (bundled in standalone game)
+------------------------------------
+The MIT License
+
+Copyright © 2010-2025 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3ce8f" />
+    <meta name="description" content="Beach Ball Boogey AI rally — return the serve and play a local rival." />
+    <title>Beach Ball Boogey — AI Rally</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="scene-root" aria-label="3D foot tennis court" tabindex="-1"></div>
+
+      <header class="topline" aria-label="Game status">
+        <a class="wordmark" href="#" aria-label="Beach Ball Boogey">
+          <span class="beach-ball mini" aria-hidden="true"></span>
+          <span>BEACH BALL <span class="wordmark-light">BOOGEY</span></span>
+        </a>
+        <div class="topline-right">
+          <label id="difficulty-control" class="difficulty-control">Rival
+            <select id="difficulty" aria-label="Rival difficulty">
+              <option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option>
+            </select>
+          </label>
+          <button id="music-button" class="mute-button" type="button" aria-pressed="true">♫ Music on</button>
+          <button id="mute-button" class="mute-button" type="button" aria-label="Mute sound" aria-pressed="false">Sound on</button>
+          <button class="boogey-button compact" data-action="options" id="menu-options">OPTIONS</button><span id="layer-tag" class="layer-tag"><i></i> AI RALLY</span>
+          <span id="status-chip" class="status-chip" data-testid="game-status">READY</span>
+        </div>
+      </header>
+
+      <section id="scoreboard" class="scoreboard" aria-label="Match score" aria-live="polite" hidden>
+        <div class="score-side"><span>YOU</span><strong id="score-player">0</strong></div>
+        <span class="score-divider" aria-hidden="true">—</span>
+        <div class="score-side"><span>RIVAL</span><strong id="score-rival">0</strong></div>
+        <span id="server-label" class="server-label">RIVAL SERVES</span>
+      </section>
+
+      <main class="interface">
+        <section id="intro-panel" class="intro-panel" aria-labelledby="game-title">
+          <p class="eyebrow"><span>01</span> &nbsp; FIRST TOUCH</p>
+          <h1 id="game-title">Own your<br /><em>side of the court.</em></h1>
+          <p id="game-description" class="intro-copy">Return the opening serve, then rally with the local rival. Aim with the mouse; left-click kicks and right-click headers.</p>
+
+          <div class="control-list" aria-label="Movement controls">
+            <div class="control-row">
+              <span class="control-keyset"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>
+              <span>Move around your half</span>
+            </div>
+            <div class="control-row">
+              <span class="control-keyset arrow-keys"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></span>
+              <span>Or use arrow keys</span>
+            </div>
+            <div class="control-row" id="kick-control-row">
+              <span class="key-single">SPACE</span>
+              <span id="kick-control-copy">Jump · stay responsive in the air</span>
+            </div>
+            <div class="control-row" id="kick-action-control-row">
+              <span class="key-single">LMB</span>
+              <span>Kick · F keyboard fallback</span>
+            </div>
+            <div class="control-row" id="header-action-control-row">
+              <span class="key-single">RMB</span>
+              <span>Header · E keyboard fallback</span>
+            </div>
+            <div class="control-row">
+              <span class="key-single">ESC</span>
+              <span>Pause and take a breather</span>
+            </div>
+            <div class="control-row">
+              <span class="key-single">RESET</span>
+              <span id="reset-control-copy">Reset using the button</span>
+            </div>
+          </div>
+
+          <div class="panel-actions">
+            <button id="play-button" class="button-primary" type="button" data-testid="play-button">
+              <span id="play-label">Play</span><span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+            <button id="reset-button" class="button-quiet" type="button" data-testid="reset-button" aria-label="Reset rally"><span id="reset-label">Reset rally</span> <span aria-hidden="true">↺</span></button>
+          </div>
+
+          <div class="panel-footnote"><span class="pulse-dot"></span><span id="panel-hint">Hit Play · Space jump · LMB kick · RMB header.</span></div>
+        </section>
+      </main>
+
+      <aside class="court-caption" aria-label="Court information">
+        <span class="caption-rule"></span>
+        <div><strong>THE BEACH COURT</strong><span id="court-mode-copy">One bounce per side · one return each</span></div>
+      </aside>
+
+      <section id="power-hud" class="power-hud" aria-label="Power kick" hidden>
+        <div class="power-heading"><span>POWER KICK</span><span id="power-copy">0 / 3 perfects</span></div>
+        <div id="power-meter" class="power-meter" role="meter" aria-label="Perfect returns charge" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"><i></i><i></i><i></i></div>
+        <span class="power-help">3 perfects · next kick powers up</span>
+        <button id="motion-button" class="motion-button" type="button" aria-label="Reduce motion" aria-pressed="false">Reduce motion</button>
+      </section>
+      <div id="timing-cue" class="timing-cue" role="status" aria-live="polite" hidden></div>
+      <div id="practice-status" class="practice-status" aria-live="polite"></div>
+
+      <section id="match-result-overlay" class="match-result-overlay" aria-labelledby="match-result-title" hidden>
+        <div class="match-result-card">
+          <span class="pause-kicker">MATCH POINT</span>
+          <h2 id="match-result-title">Match complete<span>.</span></h2>
+          <p id="match-result-copy">You win, 5–0.</p>
+          <button id="rematch-button" class="button-primary" type="button">Rematch <span class="button-arrow" aria-hidden="true">→</span></button>
+          <button class="boogey-button" data-action="setup">CHANGE SETUP</button><button class="boogey-button" data-action="home">MAIN MENU</button>
+        </div>
+      </section>
+
+      <div class="corner-mark" aria-hidden="true">PLAY NICE&nbsp; <span>·</span>&nbsp; PLAY FAST</div>
+
+      <section id="pause-overlay" class="pause-overlay" aria-label="Game paused" aria-live="polite" hidden>
+        <div class="pause-card">
+          <span class="pause-kicker">TAKE YOUR TIME</span>
+          <h2>Paused<span>.</span></h2>
+          <p>Your court is right where you left it.</p>
+          <button id="resume-button" class="button-primary" type="button" data-testid="resume-button">Resume <span class="button-arrow" aria-hidden="true">→</span></button><button class="boogey-button" data-action="restart">RESTART MATCH</button><button class="boogey-button" data-action="options">OPTIONS</button><button class="boogey-button" data-action="home">MAIN MENU</button>
+        </div>
+      </section>
+
+      <aside class="ingame-controls" aria-label="Game controls"><strong>MAKE YOUR MOVES</strong><dl><dt><kbd>WASD</kbd> / <kbd>↑↓←→</kbd></dt><dd>Move</dd><dt><kbd>MOUSE</kbd></dt><dd>Aim</dd><dt><kbd>LMB</kbd> / <kbd>F</kbd></dt><dd>Kick</dd><dt><kbd>RMB</kbd> / <kbd>E</kbd></dt><dd>Header</dd><dt><kbd>SPACE</kbd></dt><dd>Jump</dd><dt><kbd>ESC</kbd></dt><dd>Pause</dd></dl></aside>
+      <section id="dev-telemetry" class="dev-telemetry" aria-label="Development game telemetry" data-testid="game-telemetry" hidden>
+        <span class="telemetry-label">DEV / LIVE STATE</span>
+        <span>STATUS <b id="dev-status" data-testid="telemetry-status" data-status="ready">ready</b></span>
+        <span>POSITION <b id="dev-position" data-testid="telemetry-position" data-x="0" data-z="0">x 0.00 · z 0.00</b></span>
+        <span>FACING <b id="dev-facing" data-testid="telemetry-facing" data-facing="up">up</b></span>
+        <span>BOUNDS <b id="dev-bounds" data-testid="telemetry-bounds">—</b></span>
+        <span>BALL <b id="dev-ball">waiting</b></span>
+        <span>RIVAL <b id="dev-rival" data-x="0" data-z="-5.6" data-state="recover" data-mode="recover" data-reaction="0" data-reaction-remaining="0">x 0.00 · z -5.60 · recover</b></span>
+        <span>RALLY <b id="dev-rally" data-receiver="" data-flight="" data-bounces="" data-contact-count="0" data-result="" data-winner="">waiting</b></span>
+        <span>MATCH <b id="dev-match" data-phase="menu" data-score-player="0" data-score-rival="0" data-server="rival" data-point-sequence="0" data-delay="0" data-run-serves="0">menu · 0–0</b></span>
+        <span>SPEED <b id="dev-speed" data-testid="telemetry-speed">—</b></span>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
